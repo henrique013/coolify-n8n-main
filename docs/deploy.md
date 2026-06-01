@@ -24,7 +24,6 @@ N8N_PORT
 WEBHOOK_URL
 GENERIC_TIMEZONE
 N8N_ENCRYPTION_KEY
-N8N_DATA_SOURCE
 OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS
 N8N_POSTGRES_HOST
 N8N_POSTGRES_PORT
@@ -37,7 +36,7 @@ N8N_REDIS_PASSWORD
 N8N_REDIS_DB
 ```
 
-`N8N_DATA_SOURCE` deve apontar para um diretório estável no host. Na migração do serviço manual antigo, copie para esse diretório o conteúdo do volume que guardava `/home/node/.n8n`.
+O diretório persistente do host é `/data/n8n/shared/.n8n`. Na migração do serviço manual antigo, copie para esse diretório o conteúdo do volume que guardava `/home/node/.n8n`.
 
 O recurso Coolify deve ficar com `Connect to Predefined Network` habilitado. O domínio deve ser configurado no serviço Compose `n8n-main`, com a porta interna `5678`.
 
