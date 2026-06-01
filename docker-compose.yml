@@ -26,3 +26,10 @@ services:
       GENERIC_TIMEZONE: ${GENERIC_TIMEZONE:-America/Sao_Paulo}
     ports:
       - "5678"
+    networks:
+      - default
+      - coolify
+
+networks:
+  coolify:
+    external: true
