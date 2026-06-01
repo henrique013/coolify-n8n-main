@@ -25,7 +25,9 @@ services:
       TZ: ${GENERIC_TIMEZONE:-America/Sao_Paulo}
       N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
     volumes:
-      - n8n-data:/home/node/.n8n
+      - type: bind
+        source: ${N8N_DATA_SOURCE:?}
+        target: /home/node/.n8n
     expose:
       - "5678"
     healthcheck:
@@ -36,8 +38,3 @@ services:
       timeout: 5s
       retries: 12
       start_period: 60s
-
-volumes:
-  n8n-data:
-    name: ${N8N_DATA_VOLUME:?}
-    external: true

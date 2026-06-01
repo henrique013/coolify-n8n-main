@@ -11,7 +11,7 @@ Este recurso executa somente a UI, API, triggers e coordenação do n8n em queue
 - Conectar no Redis dedicado do n8n.
 - Publicar o domínio público do n8n.
 - Enviar execuções para workers com `OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=true`.
-- Persistir `/home/node/.n8n` em volume Docker externo informado por `N8N_DATA_VOLUME`.
+- Persistir `/home/node/.n8n` em bind mount informado por `N8N_DATA_SOURCE`.
 
 ## Fora do repositório
 
