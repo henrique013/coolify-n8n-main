@@ -24,19 +24,22 @@ N8N_PORT
 WEBHOOK_URL
 GENERIC_TIMEZONE
 N8N_ENCRYPTION_KEY
+N8N_DATA_VOLUME
 OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS
 N8N_POSTGRES_HOST
 N8N_POSTGRES_PORT
 N8N_POSTGRES_DATABASE
 N8N_POSTGRES_USER
 N8N_POSTGRES_PASSWORD
-N8N_POSTGRES_SSL_ENABLED
-N8N_POSTGRES_SSL_REJECT_UNAUTHORIZED
 N8N_REDIS_HOST
 N8N_REDIS_PORT
 N8N_REDIS_PASSWORD
 N8N_REDIS_DB
 ```
+
+`N8N_DATA_VOLUME` deve apontar para um volume Docker externo já existente. Na migração do serviço manual antigo, use o mesmo volume que guardava `/home/node/.n8n`.
+
+O recurso Coolify deve ficar com `Connect to Predefined Network` habilitado. O domínio deve ser configurado no serviço Compose `n8n-main`, com a porta interna `5678`.
 
 ## Migração
 

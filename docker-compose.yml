@@ -22,12 +22,22 @@ services:
       N8N_PORT: ${N8N_PORT:-5678}
       WEBHOOK_URL: ${WEBHOOK_URL:?}
       GENERIC_TIMEZONE: ${GENERIC_TIMEZONE:-America/Sao_Paulo}
-    ports:
+      TZ: ${GENERIC_TIMEZONE:-America/Sao_Paulo}
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
+    volumes:
+      - n8n-data:/home/node/.n8n
+    expose:
       - "5678"
-    networks:
-      - default
-      - coolify
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - wget -q -O - http://127.0.0.1:5678/healthz/readiness >/dev/null 2>&1 || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 60s
 
-networks:
-  coolify:
+volumes:
+  n8n-data:
+    name: ${N8N_DATA_VOLUME:?}
     external: true
